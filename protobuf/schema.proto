@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+message PetShopEvent {
+  string pet_id = 1;        // Unique ID of the pet
+  string pet_name = 2;      // Name of the pet
+  string species = 3;       // Species of the pet (e.g., Dog, Cat, Bird, Reptile)
+  string breed = 4;         // Breed of the pet (e.g., Bulldog, Siamese)
+  int32 age = 5;            // Age of the pet in years
+  double price = 6;         // Price of the pet
+  double weight = 7;        // Weight of the pet in kilograms
+  string checkup_date = 8;  // Last vet checkup date (in string format)
+}
