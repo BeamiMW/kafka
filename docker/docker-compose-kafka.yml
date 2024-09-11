@@ -6,7 +6,7 @@ services:
     container_name: ${KAFKA_CONTAINER_NAME}
     hostname: ${KAFKA_HOST}
     ports:
-      - "9092:9092"
+      - "29092:9092"
     environment:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_ENABLE_KRAFT=yes
