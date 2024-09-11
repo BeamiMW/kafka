@@ -6,7 +6,7 @@ services:
     container_name: ${KAFKA_CONTAINER_NAME}
     hostname: ${KAFKA_HOST}
     ports:
-      - "29092:9092"
+      - "9092:9092"
     environment:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_ENABLE_KRAFT=yes
@@ -20,7 +20,7 @@ services:
       - KAFKA_CFG_NODE_ID=1
 
   ksqldb:
-    image: "bitnami/ksql:7.4"
+    image: bitnami/ksql:7.4
     container_name: ${KSQL_CONTAINER_NAME}
     hostname: ${KSQL_HOST}
     depends_on:
@@ -33,7 +33,7 @@ services:
 
   kafka-ui:
     image: provectuslabs/kafka-ui:v0.7.0
-    container_name: kafka-ui-demo
+    container_name: kafka-ui
     depends_on:
       - kafka
       - ksqldb
@@ -50,9 +50,9 @@ services:
     container_name: ${SCHEMA_REG_CONTAINER_NAME}
     hostname: ${SCHEMA_REG_HOST}
     environment:
-      - SCHEMA_REGISTRY_HOST_NAME=${SCHEMA_REG_HOST}
-      - SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=kafka:9092
+      - SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=PLAINTEXT://kafka:9092
       - SCHEMA_REGISTRY_LISTENERS=http://${SCHEMA_REG_HOST}:8081
+      - SCHEMA_REGISTRY_HOST_NAME=${SCHEMA_REG_HOST} 
     ports:
       - "8081:8081"
     depends_on:
