@@ -12,7 +12,6 @@ services:
       - 4040:4040
       - 4041:4041
     volumes:
-      - ../:/resources
       - ../notebooks:/home/jovyan/
       - ../protobuf:/home/jovyan/protobuf
 

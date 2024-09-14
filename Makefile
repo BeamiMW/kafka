@@ -2,7 +2,7 @@ include .env
 
 docker-build:
 	@docker network inspect streaming-network >/dev/null 2>&1 || docker network create streaming-network
-	@docker build -t demo-kafka/jupyter -f ./docker/Dockerfile.jupyter .
+	@docker build -t dataeng-dibimbing/jupyter -f ./docker/Dockerfile.jupyter .
 
 jupyter:
 	@echo '__________________________________________________________'
@@ -33,6 +33,3 @@ kafka-create-topic:
 		--replication-factor ${KAFKA_REPLICATION} \
 		--bootstrap-server ${KAFKA_HOST}:9092 \
 		--topic ${KAFKA_TOPIC_NAME}
-
-proto: 
-	@protoc --python_out=. ./protobuf/schema.proto
