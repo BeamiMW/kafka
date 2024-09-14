@@ -12,6 +12,6 @@ This project demonstrates a Kafka-based producer-consumer system using JSON form
 ### How to Run:
 ```bash
 make docker-build
-protoc --python_out=. ./protobuf/schema.proto # Run proto
+protoc --python_out=. ./protobuf/schema.proto # Run protobuf, If you using protobuf
 make kafka
 make jupyter
